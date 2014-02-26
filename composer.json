@@ -2,6 +2,13 @@
     "name": "sody/sody",
     "description": "Sody Framework",
     "keywords": ["framework", "sody"],
+    "homepage": "https://github.com/kegren/sody",
+    "authors": [
+        {
+            "name": "Kenny Damgren",
+            "homepage": "http://kennydamgren.me",
+        }
+    ],
     "license": "MIT",
     "require": {
         "php": ">=5.3.3"

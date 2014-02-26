@@ -17,13 +17,13 @@ Not ready yet.
 
 ### Example
 
-'''php
+```php
 $app = new Sody\App();
 
 $app->get('home', '/', function () use ($app) {
    return $app->response('hello world!');
 });
-'''
+```
 
 ### BEST PRACTISES
 

@@ -18,16 +18,12 @@ Not ready yet.
 ### Example
 
 ```php
-$app = new Sody\App();
+$sody = new Sody\App();
 
-$app->get('home', '/', function () use ($app) {
-   return $app->response('hello world!');
+$sody->get('home', '/', function () use ($sody) {
+   return $sody->response('hello world!');
 });
 ```
-
-### BEST PRACTISES
-
-Coming soon.
 
 ### LICENSE
 

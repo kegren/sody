@@ -172,6 +172,10 @@ abstract class System implements ArrayAccess
             return new Event();
         });
 
+        $this->ioC->response = function () {
+            return new Response();
+        };
+
         $this->ioC->route = function () use ($ioC) {
             $route = new Route(null, null, null);
 

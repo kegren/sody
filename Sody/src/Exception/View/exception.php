@@ -14,8 +14,30 @@
     <![endif]-->
   </head>
   <body>
-    <h1>Oops! There is an error!</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-offset-3 col-lg-6">
+          <div class="alert alert-danger">Not again! Well, this shouldn't happend</div>
 
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="list-group">
+                <a href="#" class="list-group-item active">
+                  <h4 class="list-group-item-heading">Reason</h4>
+                  <p class="list-group-item-text"><?= $this->message ?></p>
+                </a>
+              </div>
+              <div class="list-group">
+                <a href="#" class="list-group-item">
+                  <h4 class="list-group-item-heading">File</h4>
+                  <p class="list-group-item-text"><?= $this->file ?></p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

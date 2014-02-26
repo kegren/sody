@@ -4,6 +4,7 @@ namespace Sody\Routing;
 
 use Sody\Http\Request;
 use Sody\Routing\RouteStorage;
+use Sody\Exception\NoRouteFoundException;
 
 /**
  * Route dispatcher

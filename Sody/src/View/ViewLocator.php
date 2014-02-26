@@ -11,7 +11,7 @@ namespace Sody\View;
 class ViewLocator
 {
     private $paths = array();
-    private $extension;
+    private $extension = '.php';
 
     public function __construct($paths = array(), $extension = '.php')
     {
@@ -21,18 +21,19 @@ class ViewLocator
 
     private function buildPath($view, $path = null)
     {
-        if (null === $path) {
-            return $view . $this->extension;
-        } else {
-            $path = rtrim($path, '/') . '/';
-
-            return $path . $view . $this->extension;
+        // append php if not already appended
+        if (substr($view, -4) != '.php') {
+            $view = $view . $this->extension;
         }
+
+        $path = rtrim($path, '/') . '/';
+
+        return $path ? $path . $view : $view;
     }
 
     public function exists($view)
     {
-        if (!empty($this->paths)) {
+        if ($this->paths) {
             foreach ($this->paths as $path) {
                 $file = $this->buildPath($view, $path);
 

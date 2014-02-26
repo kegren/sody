@@ -3,8 +3,8 @@
 namespace Sody;
 
 use Sody\IoC;
-use Sody\AppAbstract;
 use Sody\System;
+use Sody\Http\Response;
 use BadMethodCallException;
 
 /**
@@ -32,6 +32,13 @@ class App extends System implements AppInterface
     public function show($view, $data = array())
     {
         return $this->view->show($view, $data);
+    }
+
+    public function response($data, $headers = array())
+    {
+        $response = new Response($data, $headers);
+
+        return $response->send();
     }
 
     public function version()

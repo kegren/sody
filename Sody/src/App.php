@@ -51,12 +51,12 @@ class App extends System implements AppInterface
 
     public function on($event, $callback)
     {
-        $this->resolve('event')->on($event, $callback);
+        $this->ioC->resolve('event')->on($event, $callback);
     }
 
     public function trigger($event)
     {
-        return $this->resolve('event')->trigger($event);
+        return $this->ioC->resolve('event')->trigger($event);
     }
 
     public function register($class, $callback)

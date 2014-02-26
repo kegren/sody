@@ -30,6 +30,20 @@ class View
         $this->data = $data;
     }
 
+    public function __set($key, $value)
+    {
+        $this->data[$key] = $value;
+
+        return $this;
+    }
+
+    public function __get($key)
+    {
+        return isset($this->data[$key])
+               ? $this->data[$key]
+               : null;
+    }
+
     private function includeFile($view)
     {
         return include $view;
@@ -45,15 +59,17 @@ class View
     public function render($view = null, $data = array())
     {
         $view = (null === $view) ? $this->view : $view;
-        $data = (empty($data)) ? $this->data : array_merge($this->data, $data);
+        $this->data = empty($data)
+                    ? $this->data
+                    : array_merge($this->data, $data);
 
         if (null !== $view = $this->exists()) {
 
-            foreach ($data as $key => $value) {
+            foreach ($this->data as $key => $value) {
                 $this->{$key} = $value;
             }
 
-            extract($data);
+            extract($this->data);
 
             ob_start();
 
@@ -61,13 +77,6 @@ class View
 
             return ob_get_clean();
         }
-    }
-
-    public function __set($key, $value)
-    {
-        $this->data[$key] = $value;
-
-        return $this;
     }
 
     public function show($view = null, $data = array())

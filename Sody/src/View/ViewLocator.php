@@ -13,23 +13,25 @@ class ViewLocator
     private $paths = array();
     private $extension;
 
-    public function __construct($paths = array(__DIR__), $extension = '.php')
+    public function __construct($paths = array(), $extension = '.php')
     {
         $this->paths = $paths;
         $this->extension = $extension;
     }
 
-    private function buildPath($view, $path)
+    private function buildPath($view, $path = null)
     {
-        $path = rtrim($path, '/') . '/';
+        if (null === $path) {
+            return $view . $this->extension;
+        } else {
+            $path = rtrim($path, '/') . '/';
 
-        return $path . $view . $this->extension;
+            return $path . $view . $this->extension;
+        }
     }
 
     public function exists($view)
     {
-        $this->paths = array(__DIR__ . '/../../../');
-
         if (!empty($this->paths)) {
             foreach ($this->paths as $path) {
                 $file = $this->buildPath($view, $path);
@@ -37,6 +39,12 @@ class ViewLocator
                 if (file_exists($file)) {
                     return $file;
                 }
+            }
+        } else {
+            $file = $this->buildPath($view);
+
+            if (file_exists($file)) {
+                return $file;
             }
         }
     }

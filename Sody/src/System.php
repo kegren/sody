@@ -74,6 +74,13 @@ abstract class System implements ArrayAccess
         #$this->setView($this->ioC->resolve('view'));
     }
 
+    public function getErrorView()
+    {
+        return $this['errorView']
+               ? $this['errorView']
+               : __DIR__ . '/Exception/View/exception';
+    }
+
     public function setView(View $view)
     {
         $this->view = $view;
@@ -152,8 +159,8 @@ abstract class System implements ArrayAccess
 
     private function registerBaseEvents()
     {
-        $this->ioC->resolve('event')->on('start.sody', function () {
-            echo "hold on tight, this can get dirty. But hopefully not.";
+        $this->ioC->resolve('event')->on('sody.start', function () {
+            echo "Sody starting.... <br />";
         });
     }
 

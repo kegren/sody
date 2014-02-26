@@ -1,0 +1,7 @@
+notes.php
+app/*
+public/
+config/
+vendor/
+.gitignore~
+composer.lock

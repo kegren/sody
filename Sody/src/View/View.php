@@ -19,6 +19,7 @@ class View
     private $paths = array();
 
     /**
+     * Constructor with view and data params
      *
      * @param string $view
      * @param array  $data

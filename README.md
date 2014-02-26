@@ -20,7 +20,7 @@ PHP >= 5.3.3
 
 ### Installation
 
--
+Comming soon.
 
 ### How to use
 

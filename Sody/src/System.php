@@ -84,7 +84,7 @@ abstract class System implements ArrayAccess
         return $this->view;
     }
 
-    public function setRoute(Route $route)
+    public function setRoute(RouteStorage $route)
     {
         $this->route = $route;
     }
@@ -172,7 +172,7 @@ abstract class System implements ArrayAccess
             return new Event();
         });
 
-        $this->ioC->response = function () {
+        $this->ioC->response = function ($param) {
             return new Response();
         };
 

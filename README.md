@@ -1,5 +1,7 @@
 ### Welcome to Sody Framework!
 
+[![Build Status](https://travis-ci.org/kegren/sody.png?branch=master)](https://travis-ci.org/kegren/sody)
+
 A small and flexible PHP framework under development.
 
 ### FEATURES

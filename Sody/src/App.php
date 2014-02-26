@@ -7,6 +7,7 @@ use Sody\System;
 use Sody\Http\Response;
 use Sody\View\View;
 use BadMethodCallException;
+use Sody\Exception\NoRouteFoundException;
 
 /**
  * The App acts as a simple facade for Sody Framework.
@@ -24,7 +25,19 @@ class App extends System implements AppInterface
         $event->trigger('sody.start');
         $event->trigger('on.before.start');
 
-        $dispatch = $dispatcher->dispatch();
+        try {
+
+            $dispatch = $dispatcher->dispatch();
+
+        } catch (NoRouteFoundException $e) {
+            $this->view(
+                $this->getErrorView(),
+                array(
+                    'file' => $e->getFile(),
+                    'message' => $e->getMessage()
+                )
+            );
+        }
 
         $event->trigger('sody.end');
         $event->trigger('on.after.start');
@@ -39,7 +52,7 @@ class App extends System implements AppInterface
 
     public function response($data, $headers = array())
     {
-        $response = new Response($data, $headers);
+        $response = new Response($data, 200, $headers);
 
         return $response->send();
     }

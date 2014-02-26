@@ -1,23 +1,28 @@
-### Welcome to Sody Framework!
+# Welcome to Sody Framework!
 
 [![Build Status](https://travis-ci.org/kegren/sody.png?branch=master)](https://travis-ci.org/kegren/sody)
 
-A small and flexible PHP framework under development.
+A small and flexible PHP framework under development. This should not yet be used
+in production. More information about releases, versions etc will appear soon.
 
-### FEATURES
+### Features
 
-Coming soon.
+* Easy to use
+* PSR-2
+* Restful routing system
+* View system
+* Events
+* Simple textfile logger
 
-### SYSTEM REQUIREMENTS
+### System requirements
 
 PHP >= 5.3.3
-Composer
 
-### INSTALLATION
+### Installation
 
-Not ready yet.
+-
 
-### Example
+### How to use
 
 ```php
 $sody = new Sody\App();
@@ -27,7 +32,7 @@ $sody->get('home', '/', function () use ($sody) {
 });
 ```
 
-### LICENSE
+### License
 
 Copyright (c) 2014 Kenny Damgren
 

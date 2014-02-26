@@ -5,6 +5,7 @@ namespace Sody;
 use Sody\IoC;
 use Sody\System;
 use Sody\Http\Response;
+use Sody\View\View;
 use BadMethodCallException;
 
 /**
@@ -29,9 +30,11 @@ class App extends System implements AppInterface
         $event->trigger('on.after.start');
     }
 
-    public function show($view, $data = array())
+    public function view($view, $data = array())
     {
-        return $this->view->show($view, $data);
+        $view = new View($view, $data);
+
+        return $this->response($view);
     }
 
     public function response($data, $headers = array())
